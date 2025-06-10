@@ -1,0 +1,12 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+<h2>Réserver {{ espace.nom }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Date début (YYYY-MM-DD HH:MM):</label><br>
+    <input type="text" name="date_debut" required><br>
+    <label>Date fin (YYYY-MM-DD HH:MM):</label><br>
+    <input type="text" name="date_fin" required><br>
+    <button type="submit">Réserver</button>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+<h2>Historique de vos réservations</h2>
+<ul>
+    {% for res in reservations %}
+        <li>
+            {{ res.espace.nom }} : du {{ res.date_debut }} au {{ res.date_fin }} -
+            {% if res.confirme %}
+                Confirmée -
+                <a href="{% url 'annuler_reservation' res.id %}">Annuler</a>
+            {% else %}
+                Annulée
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Vous n'avez aucune réservation.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

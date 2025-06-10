@@ -1,0 +1,22 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Liste des Ressources{% endblock %}
+
+
+{% block content %}
+    <h1>Ressources disponibles</h1>
+    {% if user.is_staff %}
+  <a href="{% url 'ajouter_ressource' %}">Ajouter une ressource</a>
+    {% endif %}
+
+    <ul class="list-group">
+        {% for ressource in ressources %}
+            <li class="list-group-item">
+                <strong>{{ ressource.nom }}</strong> - {{ ressource.type }} (Capacité : {{ ressource.capacité }})<br>
+                {{ ressource.description }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Aucune ressource disponible.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

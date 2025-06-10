@@ -1,0 +1,21 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+<h2>Liste des espaces</h2>
+
+<form method="get">
+    <label>Capacité minimum :</label>
+    <input type="number" name="capacite" value="{{ capacite }}">
+    <button type="submit">Filtrer</button>
+</form>
+
+<ul>
+    {% for espace in espaces %}
+        <li>
+            <strong>{{ espace.nom }}</strong> (capacité: {{ espace.capacite }})
+            - <a href="{% url 'reserver_espace' espace.id %}">Réserver</a>
+        </li>
+    {% empty %}
+        <li>Aucun espace disponible</li>
+    {% endfor %}
+</ul>
+{% endblock %}

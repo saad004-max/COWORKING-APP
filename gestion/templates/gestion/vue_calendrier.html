@@ -1,0 +1,11 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+<h2>Calendrier des réservations</h2>
+<ul>
+    {% for res in reservations %}
+        <li>{{ res.espace.nom }} réservé du {{ res.date_debut }} au {{ res.date_fin }}</li>
+    {% empty %}
+        <li>Aucune réservation pour le moment.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
